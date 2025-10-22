@@ -51,6 +51,7 @@ jobs:
           /t:Clean,Build `
           /p:Platform=x64 `
           /p:Configuration=Release `
+          /p:ClCompile_AdditionalOptions="/arch:AVX2" `
           /p:WholeProgramOptimization=true `
           /p:FunctionLevelLinking=true `
           /p:EnableEnhancedInstructionSet=AdvancedVectorExtensions2
