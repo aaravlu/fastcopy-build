@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: vslavik/winsparkle
-          ref: refs/tags/v3.15
+          ref: refs/tags/v0.8.3
           path: winsparkle
 
       - name: Restore dependency packages
