@@ -20,7 +20,7 @@ jobs:
         run: |
           (Get-Content "WinSparkle.sln" -Raw) `
             -replace "# Visual Studio Version 17", "# Visual Studio Version 16" `
-            -replace "17.0.31919.166", "16.0.30320.27" `
+            -replace "17.0.31919.166", "16.0.30320.27" | `
             Set-Content "WinSparkle.sln"
 
       - name: Fetch deps
