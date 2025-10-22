@@ -21,7 +21,7 @@ jobs:
           (Get-Content "WinSparkle.sln" -Raw) `
             -replace "# Visual Studio Version 17", "# Visual Studio Version 16" `
             -replace "17.0.31919.166", "16.0.30320.27" `
-            Set-Content ".\curl\winbuild\MakefileBuild.vc"
+            Set-Content "WinSparkle.sln"
 
       - name: Fetch deps
         working-directory: winsparkle
