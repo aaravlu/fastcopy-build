@@ -32,7 +32,13 @@ jobs:
         run: |
           nuget restore
 
-      - name: Setup MSVC
+      - name: Setup msbuild
+        uses: microsoft/setup-msbuild@v2
+        with:
+          vs-version: "16.11"
+          msbuild-architecture: x64
+
+      - name: Setup msvc
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: x64
