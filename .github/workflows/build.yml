@@ -16,12 +16,8 @@ jobs:
           path: winsparkle
 
       - name: Modify
-        working-directory: winsparkle
         run: |
-          (Get-Content "WinSparkle.sln" -Raw) `
-            -replace "# Visual Studio Version 17", "# Visual Studio Version 16" `
-            -replace "17.0.31919.166", "16.0.30320.27" | `
-            Set-Content "WinSparkle.sln"
+          Move-Item -Path "WinSparkle.sln" -Destination "winsparkle/WinSparkle.sln" -Force
 
       - name: Fetch deps
         working-directory: winsparkle
