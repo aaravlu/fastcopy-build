@@ -28,10 +28,10 @@ jobs:
         run: |
           git submodule update --init --recursive
 
-      - name: Restore dependency packages
-        working-directory: winsparkle
-        run: |
-          nuget restore
+      # - name: Restore dependency packages
+      #   working-directory: winsparkle
+      #   run: |
+      #     nuget restore
 
       - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
