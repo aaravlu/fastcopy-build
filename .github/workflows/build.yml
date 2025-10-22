@@ -21,6 +21,7 @@ jobs:
           git submodule update --init --recursive
 
       - name: Restore dependency packages
+        working-directory: winsparkle
         run: |
           nuget restore
 
