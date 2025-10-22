@@ -15,6 +15,14 @@ jobs:
           ref: refs/tags/v0.8.3
           path: winsparkle
 
+      - name: Modify
+        working-directory: winsparkle
+        run: |
+          (Get-Content "WinSparkle.sln" -Raw) `
+            -replace "# Visual Studio Version 17", "# Visual Studio Version 16" `
+            -replace "17.0.31919.166", "16.0.30320.27" `
+            Set-Content ".\curl\winbuild\MakefileBuild.vc"
+
       - name: Fetch deps
         working-directory: winsparkle
         run: |
