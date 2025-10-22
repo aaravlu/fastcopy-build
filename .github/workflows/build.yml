@@ -43,6 +43,7 @@ jobs:
       - name: Build
         working-directory: winsparkle
         run: msbuild WinSparkle.sln
+          /t:Clean,Build `
           /p:Platform=x64 `
           /p:Configuration=Release `
           /p:WholeProgramOptimization=true `
