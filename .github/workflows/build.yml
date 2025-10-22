@@ -15,13 +15,14 @@ jobs:
           ref: refs/tags/v0.8.3
           path: winsparkle
 
+      - name: Fetch deps
+        working-directory: winsparkle
+        run: |
+          git submodule update --init --recursive
+
       - name: Restore dependency packages
         run: |
           nuget restore
-
-      - name: Fetch deps
-        run: |
-          git submodule update --init --recursive
 
       - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
