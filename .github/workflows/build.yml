@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: windows-2022
     steps:
-      - name: Checkout self
-        uses: actions/checkout@v4
+      # - name: Checkout self
+      #   uses: actions/checkout@v4
 
       - name: Checkout winsparkle
         uses: actions/checkout@v4
@@ -18,9 +18,9 @@ jobs:
           ref: refs/tags/v0.8.3
           path: winsparkle
 
-      - name: Modify
-        run: |
-          Move-Item -Path "WinSparkle.sln" -Destination "winsparkle/WinSparkle.sln" -Force
+      # - name: Modify
+      #   run: |
+      #     Move-Item -Path "WinSparkle.sln" -Destination "winsparkle/WinSparkle.sln" -Force
 
       - name: Fetch deps
         working-directory: winsparkle
@@ -32,12 +32,6 @@ jobs:
         run: |
           nuget restore
 
-      - name: Setup msbuild
-        uses: microsoft/setup-msbuild@v2
-        with:
-          vs-version: "16.11"
-          msbuild-architecture: x64
-
       - name: Setup msvc
         uses: ilammy/msvc-dev-cmd@v1
         with:
@@ -48,13 +42,14 @@ jobs:
       - name: Build
         working-directory: winsparkle
         run: msbuild WinSparkle.sln
+          /p:PlatformToolset=v142 `
           /t:Clean,Build `
           /p:Platform=x64 `
           /p:Configuration=Release `
           /p:ClCompile_AdditionalOptions="/arch:AVX2" `
+          /p:AdditionalOptions="/arch:AVX2" `
           /p:WholeProgramOptimization=true `
-          /p:FunctionLevelLinking=true `
-          /p:EnableEnhancedInstructionSet=AdvancedVectorExtensions2
+          /p:FunctionLevelLinking=true
 
       - name: Archive Binary
         uses: actions/upload-artifact@v4
