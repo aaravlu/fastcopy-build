@@ -21,6 +21,10 @@ jobs:
           toolset: 14.29
           sdk: 10.0.19041.0
 
+      - name: Restore dependency packages
+        run: |
+          nuget restore
+
       - name: Build
         run: |
           msbuild FastCopy.sln `
